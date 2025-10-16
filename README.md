@@ -4,12 +4,12 @@ A modern task management application built with React and TypeScript, featuring 
 
 ## Features
 
-- ✅ **Task Management**: Create, edit, and delete tasks
-- 📋 **Status Tracking**: Organize tasks by status (Pending, In Progress, Completed)
-- 🔍 **Search**: Find tasks quickly with real-time search
-- 💾 **Persistence**: Tasks are saved to local storage
-- 📱 **Responsive**: Works on desktop and mobile devices
-- 🎨 **Modern UI**: Clean design with smooth animations
+- **Task Management**: Create, edit, and delete tasks
+- **Status Tracking**: Organize tasks by status (Pending, In Progress, Completed)
+- **Search**: Find tasks quickly with real-time search
+- **Persistence**: Tasks are saved to local storage
+- **Responsive**: Works on desktop and mobile devices
+- **Modern UI**: Clean design with smooth animations
 
 ## Tech Stack
 
@@ -63,11 +63,11 @@ src/
 
 ## Features Implemented
 
-- ✅ Task creation, editing, and deletion
-- ✅ Status management (Pending, In Progress, Completed)
-- ✅ Search functionality
-- ✅ Local storage persistence
-- ✅ Responsive design
-- ✅ Smooth animations and transitions
-- ✅ Custom dropdown components
-- ✅ Form validation and accessibility
+- Task creation, editing, and deletion
+- Status management (Pending, In Progress, Completed)
+- Search functionality
+- Local storage persistence
+- Responsive design
+- Smooth animations and transitions
+- Custom dropdown components
+- Form validation and accessibility
