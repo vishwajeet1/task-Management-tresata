@@ -1,7 +1,8 @@
 .task-category {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   background: white;
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .category-header {

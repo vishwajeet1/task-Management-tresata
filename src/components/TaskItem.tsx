@@ -63,8 +63,6 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const handleUpdate = () => {
     setIsUpdating(true);
     onUpdateTask(task.id, task.title);
-
-    // Reset updating state after animation
     setTimeout(() => {
       setIsUpdating(false);
     }, 600);
@@ -72,8 +70,6 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
   const handleDelete = () => {
     setIsDeleting(true);
-
-    // Wait for animation to complete before actually deleting
     setTimeout(() => {
       onDeleteTask(task.id);
     }, 300);
@@ -92,7 +88,13 @@ const TaskItem: React.FC<TaskItemProps> = ({
 
       <div className="task-content">
         <div className="task-header">
-          <h3 className="task-title">{task.title}</h3>
+          <h3
+            className={`task-title ${
+              task.status === "completed" ? "completed" : ""
+            }`}
+          >
+            {task.title}
+          </h3>
           <div className="task-status">
             <span
               className="status-dot"
@@ -102,7 +104,13 @@ const TaskItem: React.FC<TaskItemProps> = ({
           </div>
         </div>
 
-        <p className="task-description">{task.description}</p>
+        <p
+          className={`task-description ${
+            task.status === "completed" ? "completed" : ""
+          }`}
+        >
+          {task.description}
+        </p>
         <p className="task-date">{formatDate(task.createdAt)}</p>
       </div>
 
