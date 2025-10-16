@@ -1,0 +1,16 @@
+.search-container {
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.search-input-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+}

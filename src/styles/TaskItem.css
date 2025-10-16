@@ -1,0 +1,133 @@
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+  position: relative;
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  color: #034ea2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 1rem;
+  flex-shrink: 0;
+  border: 1px solid #034ea2;
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.task-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #034ea2;
+  line-height: 2;
+}
+
+.task-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-text {
+  color: #231f20;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.task-description {
+  margin: 0 0 0.5rem 0;
+  color: #231f20;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 400;
+  overflow: hidden;
+}
+
+.task-date {
+  margin: 0;
+  color: #767676;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.action-button:hover .action-icon {
+  opacity: 1;
+}
+
+.edit-button:hover {
+  background-color: #dbeafe;
+}
+
+.delete-button:hover {
+  background-color: #fef2f2;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}

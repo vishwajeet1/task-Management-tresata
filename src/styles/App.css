@@ -1,0 +1,27 @@
+* {
+  font-family: "Jost", sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  background: #fff;
+}
+
+.app-main {
+  padding: 1rem 2rem 6rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.task-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .app-main {
+    padding: 1rem 1rem 6rem 1rem;
+  }
+}

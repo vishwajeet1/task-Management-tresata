@@ -1,0 +1,150 @@
+/* Input Container */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Input Label */
+.input-label {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  color: #66676b;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.input-required {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+/* Input Wrapper */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Base Input Styles */
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #231f20;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  font-size: 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input:focus-visible {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.input::placeholder {
+  color: #66676b;
+}
+
+.input:disabled {
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Input Variants */
+.input--search {
+  padding-left: 2.5rem;
+}
+
+.input--form {
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+/* Input with Icon */
+.input--with-icon {
+  padding-left: 2.5rem;
+}
+
+.input--icon-right {
+  padding-left: 0.75rem;
+  padding-right: 2.5rem;
+}
+
+/* Input Icon */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: #6b7280;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input-icon--left {
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-icon--right {
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input Error State */
+.input--error {
+  border-color: #ef4444;
+}
+
+.input--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Error Message */
+.input-error {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .input {
+    font-size: 0.875rem;
+    padding: 0.625rem;
+  }
+
+  .input--with-icon {
+    padding-left: 2.25rem;
+  }
+
+  .input--icon-right {
+    padding-left: 0.625rem;
+    padding-right: 2.25rem;
+  }
+
+  .input-icon {
+    font-size: 0.875rem;
+  }
+
+  .input-icon--left {
+    left: 0.625rem;
+  }
+
+  .input-icon--right {
+    right: 0.625rem;
+  }
+}

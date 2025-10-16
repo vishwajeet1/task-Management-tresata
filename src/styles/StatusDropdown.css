@@ -1,0 +1,139 @@
+.status-dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.status-dropdown-trigger {
+  display: flex;
+  color: #231f20;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+
+.status-dropdown-trigger:hover:not(.disabled) {
+  background: white;
+}
+
+.status-dropdown-trigger:focus {
+  outline: none;
+  background: white;
+}
+
+.status-dropdown-trigger.open {
+  background: white;
+}
+
+.status-dropdown-trigger.disabled {
+  background: #f9fafb;
+  color: #66676b;
+  cursor: not-allowed;
+  border-color: #dddddd;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-label {
+  font-size: 12px;
+  color: #231f20;
+  font-weight: 400;
+}
+
+.dropdown-arrow {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+}
+
+.dropdown-arrow.open {
+  transform: rotate(0deg);
+}
+
+.status-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 4px;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+.status-dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.status-dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.status-dropdown-option:hover {
+  background-color: #f9fafb;
+}
+
+.status-dropdown-option.selected {
+  background-color: #f3f4f6;
+}
+
+.status-dropdown-option.selected:hover {
+  background-color: #e5e7eb;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+.status-dropdown-option:focus {
+  outline: none;
+  background-color: #dbeafe;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .status-dropdown-trigger {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .status-dropdown-option {
+    padding: 0.75rem 0.875rem;
+  }
+}
