@@ -5,9 +5,19 @@
   padding: 1rem;
   background: white;
   margin-bottom: 0.5rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   border-bottom: 1px solid #dddddd;
+  animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: top;
+}
+
+.task-item.deleting {
+  animation: slideOutToRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.task-item.updating {
+  animation: pulseUpdate 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .task-avatar {
@@ -23,6 +33,12 @@
   font-size: 1rem;
   flex-shrink: 0;
   border: 1px solid #034ea2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-item:hover .task-avatar {
+  transform: scale(1.1);
+  background-color: #f0f9ff;
 }
 
 .task-content {
@@ -56,6 +72,11 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.task-item:hover .status-dot {
+  transform: scale(1.2);
 }
 
 .status-text {
@@ -87,6 +108,7 @@
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+  animation: fadeInActions 0.2s ease-in-out;
 }
 
 .action-button {
@@ -95,11 +117,20 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: scale(1);
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+}
+
+.action-button:active {
+  transform: scale(0.95);
 }
 
 .action-icon {
@@ -119,6 +150,68 @@
 
 .delete-button:hover {
   background-color: #fef2f2;
+}
+
+/* Animation keyframes */
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    max-height: 100px;
+    margin-bottom: 0.5rem;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8);
+    max-height: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+@keyframes pulseUpdate {
+  0% {
+    transform: scale(1);
+    background-color: white;
+  }
+  25% {
+    transform: scale(1.02);
+    background-color: #f0f9ff;
+  }
+  50% {
+    transform: scale(1.01);
+    background-color: #e0f2fe;
+  }
+  75% {
+    transform: scale(1.02);
+    background-color: #f0f9ff;
+  }
+  100% {
+    transform: scale(1);
+    background-color: white;
+  }
+}
+
+@keyframes fadeInActions {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {

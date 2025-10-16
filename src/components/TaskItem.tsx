@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { type Task, type TaskStatus } from "../types/Task";
 import EditIcon from "../assets/edit.svg";
 import DeleteIcon from "../assets/delete.svg";
@@ -6,7 +6,7 @@ import "../styles/TaskItem.css";
 
 interface TaskItemProps {
   task: Task;
-  onUpdateTask: () => void;
+  onUpdateTask: (id: string, title: string) => void;
   onDeleteTask: (id: string) => void;
 }
 
@@ -16,6 +16,9 @@ const TaskItem: React.FC<TaskItemProps> = ({
   onDeleteTask,
 }) => {
   const [showActions, setShowActions] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const taskRef = useRef<HTMLDivElement>(null);
 
   const formatDate = (date: Date) => {
     // Check if date is valid
@@ -57,9 +60,31 @@ const TaskItem: React.FC<TaskItemProps> = ({
     }
   };
 
+  const handleUpdate = () => {
+    setIsUpdating(true);
+    onUpdateTask(task.id, task.title);
+
+    // Reset updating state after animation
+    setTimeout(() => {
+      setIsUpdating(false);
+    }, 600);
+  };
+
+  const handleDelete = () => {
+    setIsDeleting(true);
+
+    // Wait for animation to complete before actually deleting
+    setTimeout(() => {
+      onDeleteTask(task.id);
+    }, 300);
+  };
+
   return (
     <div
-      className="task-item"
+      ref={taskRef}
+      className={`task-item ${isDeleting ? "deleting" : ""} ${
+        isUpdating ? "updating" : ""
+      }`}
       onMouseEnter={() => setShowActions(true)}
       onMouseLeave={() => setShowActions(false)}
     >
@@ -81,19 +106,21 @@ const TaskItem: React.FC<TaskItemProps> = ({
         <p className="task-date">{formatDate(task.createdAt)}</p>
       </div>
 
-      {showActions && (
+      {showActions && !isDeleting && (
         <div className="task-actions">
           <button
-            onClick={onUpdateTask}
+            onClick={handleUpdate}
             className="action-button edit-button"
             title="Edit task"
+            disabled={isUpdating}
           >
             <img src={EditIcon} alt="Edit" className="action-icon" />
           </button>
           <button
-            onClick={() => onDeleteTask(task.id)}
+            onClick={handleDelete}
             className="action-button delete-button"
             title="Delete task"
+            disabled={isDeleting}
           >
             <img src={DeleteIcon} alt="Delete" className="action-icon" />
           </button>

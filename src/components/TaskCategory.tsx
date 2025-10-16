@@ -57,13 +57,17 @@ const TaskCategory: React.FC<TaskCategoryProps> = ({
             <p>No {getStatusLabel(status).toLowerCase()} tasks</p>
           </div>
         ) : (
-          tasks.map((task) => (
-            <TaskItem
+          tasks.map((task, index) => (
+            <div
               key={task.id}
-              task={task}
-              onUpdateTask={() => onUpdateTask(task)}
-              onDeleteTask={onDeleteTask}
-            />
+              style={{ "--index": index } as React.CSSProperties}
+            >
+              <TaskItem
+                task={task}
+                onUpdateTask={(_, title) => onUpdateTask({ ...task, title })}
+                onDeleteTask={onDeleteTask}
+              />
+            </div>
           ))
         )}
       </div>

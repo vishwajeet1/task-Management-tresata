@@ -6,7 +6,6 @@ import "../styles/TaskList.css";
 interface TaskListProps {
   tasks: Task[];
   filter: TaskFilter;
-  onToggleComplete: (id: string) => void;
   onUpdateTask: (id: string, title: string) => void;
   onDeleteTask: (id: string) => void;
 }
@@ -14,16 +13,15 @@ interface TaskListProps {
 const TaskList: React.FC<TaskListProps> = ({
   tasks,
   filter,
-  onToggleComplete,
   onUpdateTask,
   onDeleteTask,
 }) => {
   const filteredTasks = tasks.filter((task) => {
     switch (filter) {
       case "completed":
-        return task.completed;
+        return task.status === "completed";
       case "incomplete":
-        return !task.completed;
+        return task.status !== "completed";
       default:
         return true;
     }
@@ -45,14 +43,14 @@ const TaskList: React.FC<TaskListProps> = ({
 
   return (
     <div className="task-list">
-      {filteredTasks.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onToggleComplete={onToggleComplete}
-          onUpdateTask={onUpdateTask}
-          onDeleteTask={onDeleteTask}
-        />
+      {filteredTasks.map((task, index) => (
+        <div key={task.id} style={{ "--index": index } as React.CSSProperties}>
+          <TaskItem
+            task={task}
+            onUpdateTask={onUpdateTask}
+            onDeleteTask={onDeleteTask}
+          />
+        </div>
       ))}
     </div>
   );

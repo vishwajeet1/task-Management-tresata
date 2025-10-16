@@ -2,13 +2,29 @@
   margin-bottom: 2rem;
 }
 
+.task-list .task-item {
+  animation-delay: calc(var(--index) * 0.1s);
+}
+
 .empty-state {
   text-align: center;
   padding: 3rem 1rem;
   color: #6b7280;
   font-size: 1.1rem;
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .empty-state p {
   margin: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

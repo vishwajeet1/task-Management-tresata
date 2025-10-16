@@ -15,7 +15,6 @@ interface TextAreaProps {
   name?: string;
   rows?: number;
   maxLength?: number;
-  showCharCount?: boolean;
   resize?: "none" | "vertical" | "horizontal" | "both";
 }
 
@@ -33,7 +32,6 @@ const TextArea: React.FC<TextAreaProps> = ({
   name,
   rows = 4,
   maxLength,
-  showCharCount = false,
   resize = "vertical",
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

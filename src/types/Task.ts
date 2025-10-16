@@ -9,4 +9,9 @@ export interface Task {
 
 export type TaskStatus = "pending" | "in-progress" | "completed";
 
-export type TaskFilter = "all" | "pending" | "in-progress" | "completed";
+export type TaskFilter =
+  | "all"
+  | "pending"
+  | "in-progress"
+  | "completed"
+  | "incomplete";
