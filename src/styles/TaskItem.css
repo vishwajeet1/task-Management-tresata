@@ -4,19 +4,19 @@
   gap: 1rem;
   padding: 1rem;
   background: white;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease-in-out;
   position: relative;
   border-bottom: 1px solid #dddddd;
-  animation: slideInFromTop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInFromTop 0.4s ease-in-out;
   transform-origin: top;
 }
 
 .task-item.deleting {
-  animation: slideOutToRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideOutToRight 0.3s ease-in forwards;
 }
 
 .task-item.updating {
-  animation: pulseUpdate 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: pulseUpdate 0.6s ease-in-out;
 }
 
 .task-avatar {
@@ -32,7 +32,7 @@
   font-size: 1rem;
   flex-shrink: 0;
   border: 1px solid #034ea2;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease-in-out;
 }
 
 .task-item:hover .task-avatar {
@@ -81,7 +81,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease-in-out;
 }
 
 .task-item:hover .status-dot {
@@ -131,7 +131,7 @@
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 4px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease-in-out;
   font-size: 1rem;
   display: flex;
   align-items: center;
@@ -199,21 +199,13 @@
     transform: scale(1);
     background-color: white;
   }
-  25% {
-    transform: scale(1.02);
-    background-color: #f0f9ff;
-  }
   50% {
-    transform: scale(1.01);
+    transform: scale(1.1);
     background-color: #e0f2fe;
-  }
-  75% {
-    transform: scale(1.02);
-    background-color: #f0f9ff;
   }
   100% {
     transform: scale(1);
-    background-color: white;
+    background-color: #e0f2fe;
   }
 }
 
@@ -225,16 +217,5 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
   }
 }

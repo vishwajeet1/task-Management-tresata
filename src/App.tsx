@@ -49,7 +49,6 @@ function App() {
 
       <main className="app-main">
         <div className="task-categories">
-          {/* Render task categories in order: in-progress, pending, completed */}
           {["in-progress", "pending", "completed"].map((status) => (
             <TaskCategory
               key={status}

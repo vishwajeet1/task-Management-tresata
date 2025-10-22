@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { type Task, type TaskStatus } from "../types/Task";
 import EditIcon from "../assets/edit.svg";
 import DeleteIcon from "../assets/delete.svg";
@@ -19,6 +19,8 @@ const TaskItem: React.FC<TaskItemProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const taskRef = useRef<HTMLDivElement>(null);
+  const updateTimerRef = useRef<number | null>(null);
+  const deleteTimerRef = useRef<number | null>(null);
 
   const formatDate = (date: Date) => {
     // Check if date is valid
@@ -60,20 +62,40 @@ const TaskItem: React.FC<TaskItemProps> = ({
     }
   };
 
+  const clearUpdateTimer = () => {
+    if (updateTimerRef.current) {
+      clearTimeout(updateTimerRef.current);
+    }
+  };
+  const clearDeleteTimer = () => {
+    if (deleteTimerRef.current) {
+      clearTimeout(deleteTimerRef.current);
+    }
+  };
+
   const handleUpdate = () => {
     setIsUpdating(true);
-    onUpdateTask(task.id, task.title);
-    setTimeout(() => {
+    clearUpdateTimer();
+    updateTimerRef.current = setTimeout(() => {
       setIsUpdating(false);
+      onUpdateTask(task.id, task.title);
     }, 600);
   };
 
   const handleDelete = () => {
     setIsDeleting(true);
-    setTimeout(() => {
+    clearDeleteTimer();
+    deleteTimerRef.current = setTimeout(() => {
       onDeleteTask(task.id);
     }, 300);
   };
+
+  useEffect(() => {
+    return () => {
+      clearUpdateTimer();
+      clearDeleteTimer();
+    };
+  }, []);
 
   return (
     <div

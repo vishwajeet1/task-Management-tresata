@@ -1,51 +1,11 @@
 import { useState, useCallback, useMemo } from "react";
 import { type Task, type TaskStatus } from "../types/Task";
 import { useTaskStorage } from "./useTaskStorage";
+import { SAMPLE_TASKS } from "../constant";
 
 export function useTaskManager() {
   // Initial sample data for demo purposes
-  const [tasks, setTasks] = useTaskStorage("tasks", [
-    {
-      id: "1",
-      title: "Review PR #123",
-      description: "Need to review the authentication changes before merging",
-      status: "in-progress",
-      createdAt: new Date(2024, 6, 31),
-      updatedAt: new Date(2024, 6, 31),
-    },
-    {
-      id: "2",
-      title: "Update documentation",
-      description: "Add examples for the new API endpoints",
-      status: "in-progress",
-      createdAt: new Date(2024, 6, 30),
-      updatedAt: new Date(2024, 6, 30),
-    },
-    {
-      id: "3",
-      title: "Fix login bug",
-      description: "Users can't login with special characters in password",
-      status: "pending",
-      createdAt: new Date(2024, 6, 29),
-      updatedAt: new Date(2024, 6, 29),
-    },
-    {
-      id: "4",
-      title: "Setup CI/CD pipeline",
-      description: "Configure automated testing and deployment",
-      status: "pending",
-      createdAt: new Date(2024, 6, 28),
-      updatedAt: new Date(2024, 6, 28),
-    },
-    {
-      id: "5",
-      title: "Database migration",
-      description: "Migrate user table to new schema",
-      status: "completed",
-      createdAt: new Date(2024, 6, 27),
-      updatedAt: new Date(2024, 6, 27),
-    },
-  ]);
+  const [tasks, setTasks] = useTaskStorage("tasks", SAMPLE_TASKS);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState<"main" | "add" | "edit">(
