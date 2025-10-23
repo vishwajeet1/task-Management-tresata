@@ -79,7 +79,7 @@ const TaskItem: React.FC<TaskItemProps> = ({
     updateTimerRef.current = setTimeout(() => {
       setIsUpdating(false);
       onUpdateTask(task.id, task.title);
-    }, 600);
+    }, 100);
   };
 
   const handleDelete = () => {
